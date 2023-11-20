@@ -34,18 +34,18 @@ export const unpkgPathPlugin = () => {
           return {
             loader: 'jsx',
             contents: `
-              const message = require('nested-test-pkg');
-              console.log(message);
+              import React, {useState} from 'react';
+              console.log(react, reactDOM);
             `,
           };
         }
 
         const { data, request } = await axios.get(args.path);
-        console.log({request})
+        console.log({ request });
         return {
           loader: 'jsx',
           contents: data,
-          resolveDir: new URL('./', request.responseURL).pathname
+          resolveDir: new URL('./', request.responseURL).pathname,
         };
       });
     },
